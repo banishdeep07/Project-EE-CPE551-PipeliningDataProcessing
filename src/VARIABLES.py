@@ -57,11 +57,11 @@ LABEL_AND_TRAIN_ON_SAME_TABLE = True # if not, specify LABELTABLE, and join key
 LABEL_TABLE = False
 JOIN_KEY = None
 LABEL_IS_LAST_COLUMN_IN_TRAIN = False # Label on last column or not. if not, specify label column
-LABEL_COLUMN = 'target'
+LABEL_COLUMN = 'target' # to change this with name of label column
 #LABEL_COLUMN = 'isFraud'
 PROBLEM_TYPE = "Classification" # Other option being "Regression" among two oprions: {"Classification","Regression"}
-USE_RANDOM_SEARCH = True # if to use RandomSearch, default True
-USE_ENSEMBLE = True # if to use ensemble, default True
+USE_RANDOM_SEARCH = False # if to use RandomSearch, default False
+USE_ENSEMBLE = False # if to use ensemble, default False
 
 
 # Some Domain Specific Parameters
