@@ -1,5 +1,5 @@
 # ProjectEE551-PipeliningGeneralDSProcessing
-This project is for an educational practice. This is the project as the requirement for the completion of course CPE/EE 551, Engineer Progmng/Applc in Python
+This project is for an educational practice. This is the project as the requirement for the completion of course CPE/EE 551, Engineer Programming/Application in Python
 
 ## Introduction
 This proposal outlines the theme of the project as requirement for the course completion for EE/CPE 551 Engineering Application and Programming in Python.
@@ -22,7 +22,7 @@ For time constraints consideration, this project will limit the scope to organiz
 The open stub file will be created with parameters specification if user wants to override default parameters like location of files, the target column name, hyperparameters or searchspace for models in dictionary form, ensemble methods, etc.
 
 ## Testing
-The testing of the pipeline will be performed using two of the kaggle competions where training and testing files are flat files. One competetion dataset will be used as baseline for pipelining and other will be used for validation during development phase.
+The testing of the pipeline will be performed using two of the kaggle competitions where training and testing files are flat files. One competition dataset will be used as baseline for pipelining and other will be used for validation during development phase.
 
 ## December 01, on submission comments
 
@@ -40,9 +40,9 @@ The testing of the pipeline will be performed using two of the kaggle competions
 * lightgbm
 * xgboost
 
-## Processes to run this repos (with assumption all required packages are installed)
-1. Cloning repos
-2. Putting the required files in required directories
+## Processes to run this repository (with assumption all required packages are installed)
+1. Cloning repository
+2. Putting the required files in respective directories
 * train file in directory: data/train/
 * test file in directory: data/test/ [if needed to, optional]
 * sample_submission file in directory: data/sample_submission/ [if needed to, optional]
@@ -54,13 +54,12 @@ The testing of the pipeline will be performed using two of the kaggle competions
 
 ## For an instance, I have included outputs as:
 1. The very small data subset is taken from original source: https://www.kaggle.com/c/santander-customer-transaction-prediction. And default classifiers are used
-The changes mde from original dataset includes:
+The changes made from original dataset includes:
 * Only selecting first 1000 rows of training dataset
 * Inserting random empty elements in two columns
 * For testing on 25 instances only for test data, only 25 rows were included. Sample Submission file is adjusted accordingly
 
-## This reduction of data is made only to portray usability in efficient manner. This might induce __warnings__ and __overfitting__. To see the original outputs except pickle output, please check this shared drive link:
-[https://drive.google.com/open?id=1iRhp4WPv2WedqNJfCPykGKMwVhFwaoa1] And also included here in this repos in folder: "Real Output Examples (without lowering dataset)"
+## This reduction of data is made only to portray usability in efficient manner. This might induce __warnings__ and __overfitting__. To see the original outputs except pickle output, please check this shared drive link:[https://drive.google.com/open?id=1iRhp4WPv2WedqNJfCPykGKMwVhFwaoa1] Also included here in this repository in folder: "Real Output Examples (without lowering dataset)"
 
 2. The run of models as proposed create the following outputs:
 * 00.trainData_X.pickle
@@ -73,7 +72,7 @@ The changes mde from original dataset includes:
 * LGBMClassifierAUC.png
 * MLPClassifierAUC.png
 * XGBClassifierAUC.png
-#### These three output plots for AUC help in analysis of performance per cross validation folds. SImilarly, Variance Explained and R2 measure is used for Regression problems
+#### These three output plots for AUC help in analysis of performance per cross validation folds. Similarly, Variance Explained and R2 measure is used for Regression problems
 * Predictions/LGBMClassifieroutputPrediction.csv
 * Predictions/MLPClassifieroutputPrediction.csv
 * Predictions/XGBClassifieroutputPrediction.csv
