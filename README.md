@@ -60,7 +60,7 @@ The changes mde from original dataset includes:
 * For testing on 25 instances only for test data, only 25 rows were included. Sample Submission file is adjusted accordingly
 
 ## This reduction of data is made only to portray usability in efficient manner. This might induce __warnings__ and __overfitting__. To see the original outputs except pickle output, please check this shared drive link:
-[https://drive.google.com/open?id=1iRhp4WPv2WedqNJfCPykGKMwVhFwaoa1]
+[https://drive.google.com/open?id=1iRhp4WPv2WedqNJfCPykGKMwVhFwaoa1] And also included here in this repos in folder: "Real Output Examples (without lowering dataset)"
 
 2. The run of models as proposed create the following outputs:
 * 00.trainData_X.pickle
