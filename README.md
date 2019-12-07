@@ -86,3 +86,7 @@ The changes made from original dataset includes:
 * Inclusion of other unstructured-data-types like images, text, etc training as well on pipeline
 * More efficient processing and pipelining
 * Random Search [though can be triggered through custom model on submission on December 01]
+
+
+## AFTER COURSE EVALUATION (Continuation of work on this repository)
+* December 06: Image structuring functionality addded, the pickle file for images consist numpy ndarray irrespective of pandas DataFrame in other formats
