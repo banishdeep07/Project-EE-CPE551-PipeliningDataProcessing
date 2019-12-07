@@ -32,8 +32,7 @@ TRAIN_DIRECTORY = ROOT_DIRECTORY + "data/train/" # train directory
 TEST_DIRECTORY = ROOT_DIRECTORY + "data/test/" # test directory that contains files
 SAMPLE_SUBMISSION_PROVIDED = True #
 SAMPLE_SUBMISSION_DIRECTORY = ROOT_DIRECTORY + "data/sample_submission/"
-OUTPUT_DIRECTORY = ROOT_DIRECTORY + "/outputs/" 
-
+OUTPUT_DIRECTORY = ROOT_DIRECTORY + "/outputs/"
 """ the outputs are: 
 01.correlationAmongVariables.jpg
 01.correlationAmongVariables.csv
@@ -62,6 +61,18 @@ LABEL_COLUMN = 'target' # to change this with name of label column
 PROBLEM_TYPE = "Classification" # Other option being "Regression" among two oprions: {"Classification","Regression"}
 USE_RANDOM_SEARCH = False # if to use RandomSearch, default False
 USE_ENSEMBLE = False # if to use ensemble, default False
+
+
+IMAGE_STRUCTURING = False
+IMAGE_TRAIN_DIRECTORY = TRAIN_DIRECTORY + "Images/"
+IMAGE_TEST_DIRECTORY = TEST_DIRECTORY + "Images/"
+IMAGE_LABEL_ON_FLAT_FILE = True
+IMAGE_LABEL_DIRECTORY = TRAIN_DIRECTORY
+IMAGE_LABEL_FILE = "train.csv"
+IMAGE_NAME_COLUMN = 'Image'
+IMAGE_LABEL_COLUMN = 'Id'
+IMAGE_WIDTH = 128
+IMAGE_HEIGHT = 128
 
 
 # Some Domain Specific Parameters

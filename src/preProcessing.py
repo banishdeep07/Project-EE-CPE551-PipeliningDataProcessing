@@ -12,6 +12,9 @@ from VARIABLES import *
 import seaborn as sns
 from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
+import pickle
+import cv2
+import pickle
 
 
 def processTrainFiles(fileDirectory):
@@ -96,28 +99,62 @@ def processTrainTestFiles(ROOT_DIRECTORY):
 	#print(trainData_X.shape)
 	#print(testData_X.shape)
 
+def processImageFiles():
+	global trainData_Y
+	global trainData_X
+	global testData_X
+
+	trainData_X = []
+	testData_X = []
+	for file in os.listdir(IMAGE_TRAIN_DIRECTORY):
+	    image=cv2.imread(os.path.join(IMAGE_TRAIN_DIRECTORY,file))
+	    image=cv2.resize(image,(IMAGE_WIDTH,IMAGE_HEIGHT))
+	    trainData_X.append(image)
+	for file in os.listdir(IMAGE_TEST_DIRECTORY):
+	    image=cv2.imread(os.path.join(IMAGE_TEST_DIRECTORY,file))
+	    image=cv2.resize(image,(IMAGE_WIDTH,IMAGE_HEIGHT))
+	    testData_X.append(image)
+	if IMAGE_LABEL_ON_FLAT_FILE:
+		trainData=pd.DataFrame()
+		trainData[IMAGE_NAME_COLUMN]=os.listdir(IMAGE_TRAIN_DIRECTORY)
+		trainData_Y=pd.read_csv(IMAGE_LABEL_DIRECTORY + IMAGE_LABEL_FILE)	
+		trainData_Y=trainData.merge(trainData_Y, on=IMAGE_NAME_COLUMN)
+
+	filePointer = open(OUTPUT_DIRECTORY + '00.trainData_X.pickle', 'wb')
+	pickle.dump(trainData_X, filePointer)
+	filePointer.close()
+	filePointer = open(OUTPUT_DIRECTORY + '00.testData_X.pickle', 'wb')
+	pickle.dump(testData_X, filePointer)
+	filePointer.close()
+	trainData_Y[IMAGE_LABEL_COLUMN].to_pickle(OUTPUT_DIRECTORY + '00.trainData_Y.pickle')
+	#print(trainData_Y[IMAGE_LABEL_COLUMN])	
+
 def process():
 	global trainData_X
 	global trainData_Y
 	global testData_X
 
-	trainData_X = pd.DataFrame()
-	trainData_Y = pd.DataFrame()
-	testData_X = pd.DataFrame()
+	if IMAGE_STRUCTURING: #this used numpy array and thus pickle would load image files in numpy ndarray
+		processImageFiles()
+	
 
-	if  not MULTIPLE_FILE_TRAIN:
-		trainFiles = [TRAIN_DIRECTORY + os.listdir(TRAIN_DIRECTORY)[0]]
 	else:
-		trainFiles = [TRAIN_DIRECTORY + x for x in glob.glob(TRAIN_DIRECTORY+'*.csv')]
+		trainData_X = pd.DataFrame()
+		trainData_Y = pd.DataFrame()
+		testData_X = pd.DataFrame()
 
+		if  not MULTIPLE_FILE_TRAIN:
+			trainFiles = [TRAIN_DIRECTORY + os.listdir(TRAIN_DIRECTORY)[0]]
+		else:
+			trainFiles = [TRAIN_DIRECTORY + x for x in glob.glob(TRAIN_DIRECTORY+'*.csv')]
 
-	#for each File in trainFiles, identified by blob
-	for eachFile in trainFiles:
-		processTrainFiles(eachFile)
-	trainData_Y = trainData_Y.transpose()
+		#for each File in trainFiles, identified by blob
+		for eachFile in trainFiles:
+			processTrainFiles(eachFile)
+		trainData_Y = trainData_Y.transpose()
 
-	processTrainTestFiles(ROOT_DIRECTORY)
+		processTrainTestFiles(ROOT_DIRECTORY)
 
-	trainData_X.to_pickle(OUTPUT_DIRECTORY + '00.trainData_X.pickle')
-	testData_X.to_pickle(OUTPUT_DIRECTORY + '00.testData_X.pickle')
-	trainData_Y.to_pickle(OUTPUT_DIRECTORY + '00.trainData_Y.pickle')
+		trainData_X.to_pickle(OUTPUT_DIRECTORY + '00.trainData_X.pickle')
+		testData_X.to_pickle(OUTPUT_DIRECTORY + '00.testData_X.pickle')
+		trainData_Y.to_pickle(OUTPUT_DIRECTORY + '00.trainData_Y.pickle')
